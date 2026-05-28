@@ -1,0 +1,2 @@
+Main-Class: com.rahamatj.cliPharmacy.Main
+Class-Path: lib/sqlite-jdbc-3.53.1.0.jar
