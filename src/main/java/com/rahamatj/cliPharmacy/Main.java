@@ -24,17 +24,17 @@ public class Main {
     }
 
     // Add a medicine record using the supplied connection
-    private static void addMedicine(Connection conn) {
-        Scanner scanner = new Scanner(System.in);
+    private static void addMedicine(Connection conn, Scanner scanner) {
+
 
         System.out.println("Enter name of medicine: ");
         String name = scanner.nextLine();
         System.out.println("Enter price of medicine: ");
-        double price = scanner.nextDouble();
+        double price = Double.parseDouble(scanner.nextLine());
         System.out.println("Enter expiry of medicine (dd/mm/yyyy): ");
-        String expiry = scanner.next();
+        String expiry = scanner.nextLine();
         System.out.println("Enter quantity of medicine: ");
-        int quantity = scanner.nextInt();
+        int quantity = Integer.parseInt(scanner.nextLine());
 
         String sql = "INSERT INTO medicines(name, price, expiry, quantity) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -65,7 +65,7 @@ public class Main {
                 choice = scanner.nextLine();
 
                 if (choice.equals("1")) {
-                    addMedicine(conn);
+                    addMedicine(conn, scanner);
                 } else if (choice.equals("2")) {
                     printAllMedicines(conn);
                 }
